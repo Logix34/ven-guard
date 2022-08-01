@@ -12,35 +12,20 @@ use Yajra\DataTables\DataTables;
 
 class PermissionController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
-
-
         $roles= Role::with('permissions')->get();
       $permissions= Permission::with('roles')->get();
      return view('layouts.Admin.Permission.index',compact('roles','permissions',));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
         return view('layouts.Admin.Permission.add');
     }
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function createpermission(Request $request){
 
         $permission_data = [
@@ -68,8 +53,6 @@ class PermissionController extends Controller
      */
     public function store(Request $request)
     {
-
-
           $input = $request->roles;
         $roles=Role::get();
                 foreach ($roles as $role){

@@ -200,7 +200,6 @@ class AdminController extends Controller
             $file_path = 'uploads/profile/' . $request['id'] . '/' . $file_name;
             User::whereId($request['id'])->update(['profile_picture' => $file_path]);
         }
-
         return response()->json([
             "success" => [
                 "message" => "profile update successfully"
